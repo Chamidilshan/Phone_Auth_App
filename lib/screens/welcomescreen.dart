@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phone_auth_app/widgets/custom_button.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -11,6 +12,8 @@ class WelcomeScreen extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
                   'assets/image1.png',
@@ -40,7 +43,15 @@ class WelcomeScreen extends StatelessWidget {
                 SizedBox(
                   height: 20.0,
                 ),
+                SizedBox(
+                  width: double.infinity,
+                  height: 50.0,
+                  child: CustomButton(
+                    onPressed: () {},
+                    text: 'Get Started',
 
+                  ),
+                )
               ],
             ),
           ),
