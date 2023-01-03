@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:phone_auth_app/widgets/custom_button.dart';
+import 'package:phone_auth_app/screens/register_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -47,9 +48,10 @@ class WelcomeScreen extends StatelessWidget {
                   width: double.infinity,
                   height: 50.0,
                   child: CustomButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> const RegisterScreen()));
+                    },
                     text: 'Get Started',
-
                   ),
                 )
               ],
