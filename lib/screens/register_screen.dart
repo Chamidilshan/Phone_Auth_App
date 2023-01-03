@@ -1,3 +1,4 @@
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -11,8 +12,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   final TextEditingController phoneController = TextEditingController();
 
+  Country selectedCountry =  Country(
+      phoneCode: '94',
+      countryCode: 'SR',
+      e164Sc: 0,
+      geographic: true,
+      level: 1,
+      name: 'Sri Lanka',
+      example: 'Sri Lanka',
+      displayName: 'Sri Lanka',
+      displayNameNoCountryCode: 'SL',
+      e164Key: ''
+  );
+
   @override
   Widget build(BuildContext context) {
+
+    phoneController.selection = TextSelection.fromPosition(
+      TextPosition(offset: phoneController.text.length),
+    );
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -56,7 +74,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   height: 20.0,
                 ),
                 TextFormField(
+                  cursorColor: Colors.purple,
                   controller: phoneController,
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  onChanged: (value) {
+                    setState(() {
+                      phoneController.text = value;
+                    });
+                  },
                   decoration: InputDecoration(
                     hintText: 'Enter your phone number',
                     enabledBorder: OutlineInputBorder(
@@ -67,8 +95,42 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         borderRadius: BorderRadius.circular(10),
                         borderSide: BorderSide(color: Colors.black12),
                       ),
+                    prefixIcon: Container(
+                      padding: EdgeInsets.all(8.0),
+                      child: InkWell(
+                        onTap: () {
+                          showCountryPicker(context: context,
+                              countryListTheme: CountryListThemeData(
+                                bottomSheetHeight: 550.0,
+                              ),
+                              onSelect: (value){
+                            selectedCountry = value;
+                          });
+                        },
+                        child: Text(
+                          '${selectedCountry.flagEmoji} + ${selectedCountry.phoneCode}',
+                          style: TextStyle(
+                              fontSize: 18.0,
+                              color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    suffixIcon: phoneController.text.length > 9 ? Container(
+                      height: 30.0,
+                        width: 30.0,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.green,
+                      ),
+                      child: Icon(Icons.done,
+                        color: Colors.white,
+                        size: 20.0,
+                      ),
+                    ) : null,
                   ),
-                )
+                ),
               ],
             ),
           ),
