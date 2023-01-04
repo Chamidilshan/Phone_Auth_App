@@ -1,5 +1,6 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:phone_auth_app/widgets/custom_button.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -87,6 +88,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   },
                   decoration: InputDecoration(
                     hintText: 'Enter your phone number',
+                    hintStyle: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 15.0,
+                      color: Colors.grey.shade600,
+                    ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                       borderSide: BorderSide(color: Colors.black12),
@@ -120,6 +126,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     suffixIcon: phoneController.text.length > 9 ? Container(
                       height: 30.0,
                         width: 30.0,
+                      margin: EdgeInsets.all(10.0),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.green,
@@ -131,6 +138,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ) : null,
                   ),
                 ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                SizedBox(
+                  height: 50.0,
+                  width: double.infinity,
+                  child: CustomButton(
+                    text: 'Login',
+                    onPressed: () {},
+                  ),
+                )
               ],
             ),
           ),
