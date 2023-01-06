@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:phone_auth_app/widgets/custom_button.dart';
 import 'package:phone_auth_app/screens/register_screen.dart';
+import 'package:provider/provider.dart';
+import '../provider/auth_provider.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final ap = Provider.of<AuthProvider>(context, listen: false);
     return Scaffold(
       body: SafeArea(
         child: Center(
