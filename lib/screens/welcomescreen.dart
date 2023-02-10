@@ -3,6 +3,7 @@ import 'package:phone_auth_app/widgets/custom_button.dart';
 import 'package:phone_auth_app/screens/register_screen.dart';
 import 'package:provider/provider.dart';
 import '../provider/auth_provider.dart';
+import 'package:phone_auth_app/screens/home_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -52,7 +53,13 @@ class WelcomeScreen extends StatelessWidget {
                   height: 50.0,
                   child: CustomButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> const RegisterScreen()));
+                      ap.isSignedIn == true
+                          ? Navigator.push(
+                          context, MaterialPageRoute(
+                          builder: (context)=> const HomeScreen())) :
+                      Navigator.push(
+                          context, MaterialPageRoute(
+                          builder: (context)=> const RegisterScreen()));
                     },
                     text: 'Get Started',
                   ),
